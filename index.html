@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OncoSein — Guide clinique du cancer du sein</title>
+<meta name="description" content="Recommandations NCCN et ESMO, stadification TNM, PREDICT v3 et algorithmes d'urgence oncologique. Hors ligne, gratuit, sans collecte de données.">
+<meta property="og:title" content="OncoSein — Guide clinique du cancer du sein">
+<meta property="og:description" content="Recommandations, stadification, PREDICT v3. Hors ligne, gratuit, sans collecte de données.">
+<meta property="og:image" content="./assets/og-image.jpg">
+<link rel="icon" type="image/png" href="./assets/icon.png">
+<link rel="apple-touch-icon" href="./assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#072F31; --teal:#0D5153; --teal-mid:#1C6B6D; --teal-pale:#DCEAE7;
+    --bg:#F4F6F5; --card:#fff; --ink:#12211F; --ink-soft:#556866; --line:#E1E8E6;
+    --alert:#B84A42;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{margin:0;font-family:"IBM Plex Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;color:var(--teal-deep);margin:0;line-height:1.15}
+  a{color:var(--teal-mid)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--teal-mid);outline-offset:3px}
+  img{display:block;max-width:100%;height:auto}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+
+  /* header */
+  header.site{background:#fff;border-bottom:1px solid var(--line)}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{width:32px;height:32px;border-radius:8px}
+  .wordmark{font-family:"Source Serif 4",serif;font-weight:600;font-size:20px;color:var(--teal-deep)}
+  .wordmark em{font-style:normal;color:var(--teal-mid)}
+  header.site nav a{text-decoration:none;color:var(--ink-soft);font-size:14.5px;margin-left:24px}
+  header.site nav a:hover{color:var(--teal-deep)}
+
+  /* hero */
+  .hero{background:#fff;border-bottom:1px solid var(--line);padding:56px 0 0;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:end}
+  .hero-copy{padding-bottom:64px}
+  .hero h1{font-size:40px;letter-spacing:-.015em;max-width:14ch}
+  .hero .lede{margin:18px 0 0;font-size:17px;color:var(--ink-soft);max-width:44ch}
+  .cta{margin-top:28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--teal-deep);color:#fff;text-decoration:none;font-weight:600;font-size:15.5px;padding:14px 24px;border-radius:8px;transition:background .15s}
+  .btn:hover{background:var(--teal)}
+  .btn svg{width:17px;height:17px}
+  .meta{font-size:13px;color:var(--ink-soft)}
+  .pills{margin-top:22px;display:flex;gap:8px;flex-wrap:wrap}
+  .pill{font-size:12.5px;color:var(--teal-deep);background:var(--teal-pale);padding:5px 12px;border-radius:999px}
+  .device{width:270px;border-radius:26px 26px 0 0;padding:9px 9px 0;background:var(--teal-deep);justify-self:center;box-shadow:0 20px 40px -20px rgba(7,47,49,.4)}
+  .device img{border-radius:19px 19px 0 0}
+
+  /* features */
+  .features{padding:64px 0 12px}
+  .sec-head{max-width:52ch;margin-bottom:36px}
+  .sec-head h2{font-size:28px}
+  .sec-head p{margin:10px 0 0;color:var(--ink-soft);font-size:16px}
+  .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .fcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+  .fcard .shot{height:210px;overflow:hidden;background:#EEF2F1;border-bottom:1px solid var(--line)}
+  .fcard .shot img{width:100%;height:100%!important;object-fit:cover;object-position:top center}
+  .fcard .body{padding:20px 20px 24px}
+  .fcard .tag{font-size:12px;font-weight:600;color:var(--teal-mid);letter-spacing:.02em}
+  .fcard.alert .tag{color:var(--alert)}
+  .fcard h3{font-size:19px;margin-top:7px}
+  .fcard p{margin:9px 0 0;font-size:14.5px;color:var(--ink-soft);line-height:1.55}
+
+  /* evidence band */
+  .evidence{margin-top:64px;background:var(--teal-deep);color:#DCE9E7;padding:56px 0}
+  .evidence .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .evidence h2{color:#fff;font-size:27px;max-width:17ch}
+  .evidence p{font-size:15.5px;color:#B9D2CF;margin:16px 0 0;max-width:48ch}
+  .evidence p strong{color:#fff;font-weight:600}
+  .srclist{margin:22px 0 0;padding:0;list-style:none;column-count:2;column-gap:28px}
+  .srclist li{font-size:13.5px;color:#9FBFBC;padding:5px 0;break-inside:avoid}
+
+  /* install */
+  .install{padding:64px 0}
+  .igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:22px}
+  .istep{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .istep .shot{background:#0B0B0B}
+  .istep .shot img{width:100%}
+  .istep .cap{padding:16px 18px 20px;font-size:14px;color:var(--ink-soft);line-height:1.5}
+  .istep .cap b{color:var(--teal-deep)}
+  .irest{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .ibox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;font-size:14px;color:var(--ink-soft);line-height:1.55}
+  .ibox b{color:var(--teal-deep)}
+
+  /* disclaimer + footer */
+  .disc{padding:0 0 60px}
+  .disc .box{background:#FAEDEB;border:1px solid #E8CDC9;border-radius:12px;padding:22px 26px;font-size:14px;color:#6B2F2B;line-height:1.6}
+  .disc .box strong{color:#4A1F1C}
+  footer.site{background:#fff;border-top:1px solid var(--line);padding:28px 0}
+  footer.site .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  footer.site p{margin:0;font-size:13px;color:var(--ink-soft)}
+  footer.site a{color:var(--ink-soft);text-decoration:none;font-size:13px;margin-left:18px}
+  footer.site a:hover{color:var(--teal-deep)}
+
+  @media(max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;gap:0}
+    .hero-copy{padding-bottom:40px}
+    .device{width:230px}
+    .fgrid{grid-template-columns:1fr 1fr}
+    .igrid{grid-template-columns:1fr}
+    .evidence .wrap{grid-template-columns:1fr;gap:28px}
+  }
+  @media(max-width:600px){
+    .hero h1{font-size:30px}
+    .fgrid{grid-template-columns:1fr}
+    .irest{grid-template-columns:1fr}
+    .srclist{column-count:1}
+    header.site nav{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <img src="./assets/icon.png" alt="" width="128" height="128">
+      <span class="wordmark">Onco<em>Sein</em></span>
+    </div>
+    <nav>
+      <a href="#outils">Fonctionnalités</a>
+      <a href="#installation">Installation</a>
+      <a href="mailto:dr.anasjenfi@gmail.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1>La prise en charge du cancer du sein, prête pour la consultation.</h1>
+      <p class="lede">Recommandations NCCN et ESMO, stadification TNM, PREDICT v3 et algorithmes d'urgence oncologique — dans une application qui fonctionne sans connexion.</p>
+      <div class="cta">
+        <a class="btn" href="./OncoSein.apk" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0-5-5m5 5 5-5M4 21h16"/></svg>
+          Télécharger l'APK
+        </a>
+        <span class="meta">Android 8.0 ou plus · v1.0.0 · 94 Mo</span>
+      </div>
+      <div class="pills">
+        <span class="pill">100 % hors ligne</span>
+        <span class="pill">Gratuit</span>
+        <span class="pill">Aucune donnée collectée</span>
+      </div>
+    </div>
+    <div class="device"><img src="./assets/hero-home.jpg" alt="Écran d'accueil d'OncoSein" width="620" height="1207"></div>
+  </div>
+</section>
+
+<section class="features" id="outils">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Ce que l'application contient</h2>
+      <p>Conçue pour la RCP, le lit du patient et la formation — le contenu suit le raisonnement clinique, pas l'ordre d'un manuel.</p>
+    </div>
+    <div class="fgrid">
+      <article class="fcard">
+        <div class="shot"><img src="./assets/feature-tools.jpg" alt="Outils cliniques d'OncoSein" loading="lazy"></div>
+        <div class="body">
+          <span class="tag">Outils cliniques</span>
+          <h3>Des calculateurs, pas des tableaux</h3>
+          <p>BSA, clairance de la créatinine, AUC Carboplatine, TNM selon AJCC 2018, sous-types moléculaires — trente-sept agents référencés.</p>
+        </div>
+      </article>
+      <article class="fcard">
+        <div class="shot"><img src="./assets/feature-predict.jpg" alt="PREDICT v3 dans OncoSein" loading="lazy"></div>
+        <div class="body">
+          <span class="tag">Pronostic</span>
+          <h3>PREDICT v3 en quelques secondes</h3>
+          <p>Bénéfice attendu de la chimiothérapie, de l'hormonothérapie et de l'anti-HER2, survie à 5, 10 et 15 ans — modèle publié par Grootes et al., 2024.</p>
+        </div>
+      </article>
+      <article class="fcard alert">
+        <div class="shot"><img src="./assets/feature-urgences.jpg" alt="Urgences oncologiques dans OncoSein" loading="lazy"></div>
+        <div class="body">
+          <span class="tag">Urgences oncologiques</span>
+          <h3>Six urgences, un algorithme chacune</h3>
+          <p>Compression médullaire, hypercalcémie, neutropénie fébrile, tamponnade — classées par degré d'urgence, avec la conduite à tenir.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="evidence">
+  <div class="wrap">
+    <div>
+      <h2>Construit sur des recommandations publiées.</h2>
+      <p>OncoSein ne collecte aucune donnée. Rien de ce que vous saisissez ne quitte votre téléphone : <strong>aucun compte, aucune statistique d'usage, aucune publicité.</strong></p>
+    </div>
+    <ul class="srclist">
+      <li>NCCN Breast Cancer v4.2024</li>
+      <li>ESMO Early Breast Cancer, 2019</li>
+      <li>ESMO Advanced Breast Cancer, 2020</li>
+      <li>ESC/ESMO Cardio-Oncologie, 2022</li>
+      <li>Référentiel National Marocain ANAM/SMSM, 2022</li>
+      <li>ONCOLOGIK — Sein, 2024</li>
+      <li>AJCC Cancer Staging Manual, 8ᵉ éd.</li>
+      <li>NCI-CTCAE v6.0</li>
+    </ul>
+  </div>
+</section>
+
+<section class="install" id="installation">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Installer l'application</h2>
+      <p>OncoSein n'est pas encore sur le Play Store. Sur Samsung, un écran de sécurité s'affiche à la première installation — voici où appuyer.</p>
+    </div>
+    <div class="igrid">
+      <div class="istep">
+        <div class="shot"><img src="./assets/install-1.jpg" alt="Appuyer sur OK" loading="lazy"></div>
+        <p class="cap"><b>1.</b> Ouvrez le fichier téléchargé. Un avertissement apparaît — appuyez sur <b>OK</b>.</p>
+      </div>
+      <div class="istep">
+        <div class="shot"><img src="./assets/install-2.jpg" alt="Ouvrir Security and privacy" loading="lazy"></div>
+        <p class="cap"><b>2.</b> Dans Paramètres, ouvrez <b>Security and privacy</b> (Sécurité et confidentialité).</p>
+      </div>
+      <div class="istep">
+        <div class="shot"><img src="./assets/install-3.jpg" alt="Désactiver Auto Blocker" loading="lazy"></div>
+        <p class="cap"><b>3.</b> Désactivez <b>Auto Blocker</b> — c'est lui qui bloquait l'installation.</p>
+      </div>
+    </div>
+    <div class="irest">
+      <div class="ibox"><b>4.</b> Revenez en arrière et appuyez de nouveau sur le fichier APK pour relancer l'installation.</div>
+      <div class="ibox"><b>5.</b> Play Protect propose d'analyser le fichier — laissez-le faire. Le scan terminé, l'installation se poursuit normalement.</div>
+    </div>
+  </div>
+</section>
+
+<section class="disc">
+  <div class="wrap">
+    <div class="box">
+      <strong>OncoSein n'est pas un dispositif médical</strong> et ne permet pas de diagnostiquer, traiter, guérir ni prévenir une quelconque affection médicale. C'est un outil éducatif de référence destiné aux professionnels de santé qualifiés. Il ne remplace ni le jugement clinique, ni les protocoles institutionnels, ni le texte intégral et actualisé des recommandations auxquelles il fait référence. Les décisions thérapeutiques relèvent de la seule responsabilité du médecin traitant.
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Développé par OncoDev · Version 1.0.0</p>
+    <div>
+      <a href="mailto:dr.anasjenfi@gmail.com">dr.anasjenfi@gmail.com</a>
+      <a href="https://anasjenfi.github.io/oncosein-privacy/">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
